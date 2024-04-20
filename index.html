@@ -119,6 +119,19 @@
             }
         }
 
+/* Defina a animação keyframe para revelar as letras uma de cada vez */
+@keyframes revelar {
+  from { width: 0; }
+}
+
+/* Aplique a animação de revelar ao elemento p */
+p {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: revelar 3s forwards;
+}
+
+
     </style>
 </head>
 <body onload="getIP()">
@@ -146,11 +159,56 @@
                     <span class="details_span">Corpo</span>
                     <select id="patent">
                         <option value="" disabled selected>Selecione o corpo que você deseja entrar</option>
-                        <option value="1">Corpo Militar</option>
-                        <option value="2">Corpo Executivo</option>
+                        <option value="Corpo Militar">Corpo Militar</option>
+                        <option value="Corpo Executivo">Corpo Executivo</option>
                     </select>
                 </div>
             </div>
+
+            <div class="details">
+                <div class="input-box">
+                    <span class="details_span">Nicks antigos</span>
+                    <input name="nickantigo" id="nickantigo" type="text" placeholder="Insira se você já teve outras contas. Separe com / Ex: Jubilei21 / Shaw3n / 3Del3a" required>
+                </div>
+
+
+                <div class="details">
+                    <div class="input-box">
+                        <span class="details_span">Se considerando um militar já na equipe, qual seria a sua primeira ideia inicial a apresentar a Corregedoria da Polícia? Seja suficientemente claro em toda a sua ideia</span>
+                        <input name="corregedoria" id="corregedoria" type="text" placeholder="Conte para nós." required>
+                    </div>
+
+
+<div class="details">
+                <div class="input-box">
+                    <span class="details_span">O que lhe chamou a atenção na POLÍCIA DIM ® 2024?</span>
+                    <input name="dim2024" id="dim2024" type="text" placeholder="Conte para nós." required>
+                </div>
+
+                <div class="details">
+                    <div class="input-box">
+                        <span class="details_span">Qual o seu departamento interno favorito?</span>
+                        <select id="favorito">
+                            <option value="" disabled selected>Selecione o departamento interno</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Relações Públicas">Relações Públicas</option>
+                            <option value="Instrutores">Instrutores</option>
+                            <option value="Rondas">Rondas</option>
+                            <option value="Auditoria Fiscal">Auditoria Fiscal</option>
+                            <option value="Recursos Humanos">Recursos Humanos</option>
+                            <option value="Diretoria Executiva">Diretoria Executiva</option>
+                            <option value="Corregedoria">Corregedoria</option>
+                            <option value="Setor de Técnologia">Setor de Técnologia</option>
+                            <option value="Academia Militar">Academia Militar</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+
+
+
             <div class="details">
                 <div class="input-box">
                     <span class="details_span">Comentários</span>
@@ -185,13 +243,21 @@
             var ipAddress = document.getElementById("ipAddress").value;
             var patent = document.getElementById("patent").value;
             var comments = document.getElementById("comments").value;
+            var nickantigo = document.getElementById("nickantigo").value;
+            var corregedoria = document.getElementById("corregedoria").value;
+            var dim2024 = document.getElementById("dim2024").value;
+            var favorito = document.getElementById("favorito").value;
 
             var formData = {
                 name: name,
                 email: email,
                 ipAddress: ipAddress,
                 patent: patent,
-                comments: comments
+                comments: comments,
+                nickantigo: nickantigo,
+                corregedoria: corregedoria,
+                dim2024: dim2024,
+                favorito: favorito
             };
 
             fetch('https://api.sheetmonkey.io/form/siPja6jpvt3RVFqe5LZTVd', {
